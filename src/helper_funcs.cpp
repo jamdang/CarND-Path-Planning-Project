@@ -40,6 +40,10 @@ int NextWaypoint(double x, double y, double theta, vector<double> maps_x, vector
 	double heading = atan2( (map_y-y),(map_x-x) );
 
 	double angle = fabs(theta-heading);
+	
+	// XZ modify start // 
+	angle = angle < (2 * M_PI - angle) ? angle : (2 * M_PI - angle); // in case theta is near 180 deg and switch between -180 and 180... 	
+	// XZ modify end  // 
 
 	if(angle > pi()/4)
 	{

@@ -11,8 +11,8 @@
 
 
 #include "traffic_prediction.h"
-#include "maneuver_planner.h"
-#include "trajectory_planner.h"
+#include "ego_car.h"
+
 
 using namespace std;
 
@@ -104,8 +104,8 @@ int main() {
           	double car_speed = j[1]["speed"];
 
           	// Previous path data given to the Planner
-          	auto previous_path_x = j[1]["previous_path_x"];
-          	auto previous_path_y = j[1]["previous_path_y"];
+          	vector<double> previous_path_x = j[1]["previous_path_x"];
+          	vector<double> previous_path_y = j[1]["previous_path_y"];
           	// Previous path's end s and d values 
           	double end_path_s = j[1]["end_path_s"];
           	double end_path_d = j[1]["end_path_d"];
@@ -128,8 +128,10 @@ int main() {
           	ego_car.s   = car_s;
           	ego_car.d   = car_d;
           	ego_car.yaw = car_yaw;
-          	ego_car.spd = car_speed;
+          	ego_car.spd = car_speed * MPH_to_MPS;
           	ego_car.ref_vel = ref_vel;
+          	ego_car.previous_path_x = previous_path_x;
+          	ego_car.previous_path_y = previous_path_y;
           	
           	Map map;
           	map.waypoints_x  = & map_waypoints_x;
@@ -141,13 +143,10 @@ int main() {
           	// Prediction: construct the current and near future traffic scene
           	Traffic traffic(sensor_fusion, map);
           	
-          	// Maneuver planner
-          	PlanManeuver(ego_car, traffic);
+          	// Plan path
+          	ego_car.PlanPath(traffic     , map, 							 									   
+				     next_x_vals , next_y_vals);
           	
-          	// Trajectory generator
-			GenerateTrajectory(ego_car, traffic        , map            , 
-										previous_path_x, previous_path_y, 										 
-										next_x_vals    , next_y_vals     );
           	
           	ref_vel = ego_car.ref_vel;
           	

@@ -15,11 +15,11 @@ struct Map {
 
 
 // For converting back and forth between radians and degrees.
-inline constexpr double pi() { return M_PI; }
-inline double deg2rad(double x) { return x * pi() / 180; }
-inline double rad2deg(double x) { return x * 180 / pi(); }
-
-
+inline constexpr double pi()     { return M_PI; }
+inline double deg2rad(double x)  { return x * pi() / 180; }
+inline double rad2deg(double x)  { return x * 180 / pi(); }
+inline double logistic(double x) { return 2.0 / (1 + exp(-x)) - 1.0 ; }
+//inline double CalcDistanceOfTwoPoints(double x1, double y1, double x2, double y2) { return sqrt( (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) );}
 double distance(double x1, double y1, double x2, double y2);
 
 
@@ -41,6 +41,7 @@ std::vector<double> getXY(double s, double d, std::vector<double> maps_s, std::v
 // get the lane index from the d value
 
 inline int GetLaneIndex(double d, double lane_width) { return int( (d-fmod(d,lane_width))/lane_width ) ; } 
+
 
 // Transform a point from global X, Y to car frame
 
