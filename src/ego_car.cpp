@@ -129,7 +129,7 @@ void EgoCar::TransitManeuver(const Traffic & traffic) {
 	
 	double lowest_cost = 999999.9;
 	FSMState best_state = NONE;
-	double fltr_coeff  = 0.05;
+	double fltr_coeff  = 0.1;
 	
 	for (int i = 0; i < successor_states.size(); i++) {
 		
