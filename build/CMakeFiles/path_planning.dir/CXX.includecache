@@ -772,6 +772,20 @@ lapacke_mangling.h
 
 /Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/Eigen-3.3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 
+/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/ego_car.cpp
+ego_car.h
+/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/ego_car.h
+iostream
+-
+
+/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/ego_car.h
+traffic_prediction.h
+/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/traffic_prediction.h
+helper_funcs.h
+/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/helper_funcs.h
+spline.h
+/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/spline.h
+
 /Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/helper_funcs.cpp
 helper_funcs.h
 /Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/helper_funcs.h
@@ -857,18 +871,8 @@ json.hpp
 /Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/json.hpp
 traffic_prediction.h
 /Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/traffic_prediction.h
-maneuver_planner.h
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/maneuver_planner.h
-trajectory_planner.h
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/trajectory_planner.h
-
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/maneuver_planner.cpp
-maneuver_planner.h
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/maneuver_planner.h
-
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/maneuver_planner.h
-traffic_prediction.h
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/traffic_prediction.h
+ego_car.h
+/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/ego_car.h
 
 /Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/spline.h
 cstdio
@@ -891,22 +895,6 @@ helper_funcs.h
 /Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/helper_funcs.h
 map
 -
-
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/trajectory_planner.cpp
-trajectory_planner.h
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/trajectory_planner.h
-iostream
--
-
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/trajectory_planner.h
-helper_funcs.h
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/helper_funcs.h
-traffic_prediction.h
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/traffic_prediction.h
-maneuver_planner.h
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/maneuver_planner.h
-spline.h
-/Users/xianzhang/Xian/Udacity/SDCND/Term3/Path Planning/CarND-Path-Planning-Project/src/spline.h
 
 /usr/local/include/pthread-barrier.h
 errno.h

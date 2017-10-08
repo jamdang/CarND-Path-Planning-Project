@@ -78,12 +78,18 @@ vector<double> TrafficParticipant::GetFrenetStateInTime(double time) {
   	  }
   	  
   	  case CURRENT: { 
+  	  
+  	  	/*
   		
-  		if (frenet_d < lane_index * kLaneWidth + 0.01)
-  			frenet_d = lane_index * kLaneWidth + 0.01;
+  		if (frenet_d < lane_index * kLaneWidth + 1.0) // 0.01
+  			frenet_d = lane_index * kLaneWidth + 1.0;
   			
-  		if (frenet_d > (lane_index + 1) * kLaneWidth - 0.01)
-  			frenet_d = (lane_index + 1) * kLaneWidth - 0.01;
+  		if (frenet_d > (lane_index + 1) * kLaneWidth - 1.0)
+  			frenet_d = (lane_index + 1) * kLaneWidth - 1.0;
+  			
+  		*/
+  		
+  		frenet_d = lane_index * kLaneWidth + kLaneWidth/2;
           
         break;
   	  }

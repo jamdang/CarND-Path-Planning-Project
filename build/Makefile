@@ -123,6 +123,33 @@ path_planning/fast:
 	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/build
 .PHONY : path_planning/fast
 
+src/ego_car.o: src/ego_car.cpp.o
+
+.PHONY : src/ego_car.o
+
+# target to build an object file
+src/ego_car.cpp.o:
+	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/ego_car.cpp.o
+.PHONY : src/ego_car.cpp.o
+
+src/ego_car.i: src/ego_car.cpp.i
+
+.PHONY : src/ego_car.i
+
+# target to preprocess a source file
+src/ego_car.cpp.i:
+	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/ego_car.cpp.i
+.PHONY : src/ego_car.cpp.i
+
+src/ego_car.s: src/ego_car.cpp.s
+
+.PHONY : src/ego_car.s
+
+# target to generate assembly for a file
+src/ego_car.cpp.s:
+	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/ego_car.cpp.s
+.PHONY : src/ego_car.cpp.s
+
 src/helper_funcs.o: src/helper_funcs.cpp.o
 
 .PHONY : src/helper_funcs.o
@@ -177,33 +204,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/maneuver_planner.o: src/maneuver_planner.cpp.o
-
-.PHONY : src/maneuver_planner.o
-
-# target to build an object file
-src/maneuver_planner.cpp.o:
-	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/maneuver_planner.cpp.o
-.PHONY : src/maneuver_planner.cpp.o
-
-src/maneuver_planner.i: src/maneuver_planner.cpp.i
-
-.PHONY : src/maneuver_planner.i
-
-# target to preprocess a source file
-src/maneuver_planner.cpp.i:
-	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/maneuver_planner.cpp.i
-.PHONY : src/maneuver_planner.cpp.i
-
-src/maneuver_planner.s: src/maneuver_planner.cpp.s
-
-.PHONY : src/maneuver_planner.s
-
-# target to generate assembly for a file
-src/maneuver_planner.cpp.s:
-	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/maneuver_planner.cpp.s
-.PHONY : src/maneuver_planner.cpp.s
-
 src/traffic_prediction.o: src/traffic_prediction.cpp.o
 
 .PHONY : src/traffic_prediction.o
@@ -231,33 +231,6 @@ src/traffic_prediction.cpp.s:
 	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/traffic_prediction.cpp.s
 .PHONY : src/traffic_prediction.cpp.s
 
-src/trajectory_planner.o: src/trajectory_planner.cpp.o
-
-.PHONY : src/trajectory_planner.o
-
-# target to build an object file
-src/trajectory_planner.cpp.o:
-	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/trajectory_planner.cpp.o
-.PHONY : src/trajectory_planner.cpp.o
-
-src/trajectory_planner.i: src/trajectory_planner.cpp.i
-
-.PHONY : src/trajectory_planner.i
-
-# target to preprocess a source file
-src/trajectory_planner.cpp.i:
-	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/trajectory_planner.cpp.i
-.PHONY : src/trajectory_planner.cpp.i
-
-src/trajectory_planner.s: src/trajectory_planner.cpp.s
-
-.PHONY : src/trajectory_planner.s
-
-# target to generate assembly for a file
-src/trajectory_planner.cpp.s:
-	$(MAKE) -f CMakeFiles/path_planning.dir/build.make CMakeFiles/path_planning.dir/src/trajectory_planner.cpp.s
-.PHONY : src/trajectory_planner.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -267,21 +240,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... path_planning"
+	@echo "... src/ego_car.o"
+	@echo "... src/ego_car.i"
+	@echo "... src/ego_car.s"
 	@echo "... src/helper_funcs.o"
 	@echo "... src/helper_funcs.i"
 	@echo "... src/helper_funcs.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/maneuver_planner.o"
-	@echo "... src/maneuver_planner.i"
-	@echo "... src/maneuver_planner.s"
 	@echo "... src/traffic_prediction.o"
 	@echo "... src/traffic_prediction.i"
 	@echo "... src/traffic_prediction.s"
-	@echo "... src/trajectory_planner.o"
-	@echo "... src/trajectory_planner.i"
-	@echo "... src/trajectory_planner.s"
 .PHONY : help
 
 
