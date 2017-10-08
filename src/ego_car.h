@@ -113,8 +113,9 @@ class EgoCar {
 
 //typedef double (EgoCar::*TrajCostFunction)(const Traffic & , const NextTrajectory & ) ;
 
-private:
-	FSMState fsm_state;
+private:	
+	
+	// ------      trajectory planning related      ------ // 
 	
 	void PrepRefPoints();
 	void GeneratePossibleGoals(const Traffic & traffic, std::vector< std::vector<double> > & goals);
@@ -126,31 +127,38 @@ private:
 	double CalcTrajCostOfBuffer(const Traffic & traffic, const NextTrajectory & next_traj, int steps = kComparePathSize);
 	
 	double CalcTrajCostOfSpeed(const Traffic & traffic, const NextTrajectory & next_traj);
-	double CalcTrajCostOfCollison(const Traffic & traffic, const NextTrajectory & next_traj);
-	
-	double CalcNearestDistToTraffic(const Traffic & traffic, const NextTrajectory & next_traj, int steps = kComparePathSize) ;
-	double CalcNearestDistToTraffic(const Traffic & traffic, const FrenetTrajectory & traj, bool same_lane = false);
-	
-	double CalcNearestDistToVehicle(const TrafficParticipant & veh, const NextTrajectory & next_traj, int steps = kComparePathSize);
-	double CalcNearestDistToVehicle(const TrafficParticipant & vehicle, const FrenetTrajectory & traj, bool same_lane = false);
-	
+	double CalcTrajCostOfCollison(const Traffic & traffic, const NextTrajectory & next_traj);		
 	double CalcTrajCostOfFollowDist(const Traffic & traffic, const NextTrajectory & next_traj);
+	double CalcTrajCostOfDist2GoalLane(const Traffic & traffic, const NextTrajectory & next_traj);
+	double CalcTrajCostOfAccel(const Traffic & traffic, const NextTrajectory & next_traj);
 	
+	double CalcNearestDistToTraffic(const Traffic & traffic, const NextTrajectory & next_traj, int steps = kComparePathSize) ;		
+	double CalcNearestDistToVehicle(const TrafficParticipant & veh, const NextTrajectory & next_traj, int steps = kComparePathSize);
+	
+	void GenerateTrajectory( const Traffic             & traffic        ,           const Map & map, 							 									   
+								   std::vector<double> & next_x_vals    , std::vector<double> & next_y_vals);
 	//std::vector< TrajCostFunction > traj_cost_functions;
 	
+	
+	
+	// ------      maneuver planning related      ------ // 
+	FSMState fsm_state;
+	double GetTargetLnId(FSMState state);
+	FrenetTrajectory GetFrenetTraj(FSMState state, const Traffic & traffic);
+	
+	void PlanManeuver(const Traffic & traffic);
+	void TransitManeuver(const Traffic & traffic);
+	std::vector<FSMState> GetSuccessorStates();
+	
+	double CalcManeuverCost(FSMState state, const Traffic & traffic);
 	double CalcManeuverCostOfBuffer(const Traffic & traffic, const FrenetTrajectory & traj, bool same_lane = false);
 	double CalcManeuverCostOfSpeed(const Traffic & traffic, const FrenetTrajectory & traj) ;
 	double CalcManeuverCostOfCollison(const Traffic & traffic, const FrenetTrajectory & traj);
-	FrenetTrajectory GetFrenetTraj(FSMState state, const Traffic & traffic);
+	double CalcManeuverCostOfBraking(const Traffic & traffic, const FrenetTrajectory & traj);	
 	
-	double CalcManeuverCostOfBraking(const Traffic & traffic, const FrenetTrajectory & traj);
-	
-	
-	double CalcTrajCostOfDist2GoalLane(const Traffic & traffic, const NextTrajectory & next_traj);
-	
-	double GetTargetLnId(FSMState state);
-	double CalcTrajCostOfAccel(const Traffic & traffic, const NextTrajectory & next_traj);
-	
+	double CalcNearestDistToTraffic(const Traffic & traffic, const FrenetTrajectory & traj, bool same_lane = false);
+	double CalcNearestDistToVehicle(const TrafficParticipant & vehicle, const FrenetTrajectory & traj, bool same_lane = false);
+		
 public:
 
 	double x;
@@ -180,21 +188,9 @@ public:
 	
 	void PlanPath(const Traffic       & traffic        , const Map           & map, 							 									   
 				  std::vector<double> & next_x_vals    , std::vector<double> & next_y_vals);
-	
-	void PlanManeuver(const Traffic & traffic);
-	void TransitManeuver(const Traffic & traffic);
 
-	std::vector<FSMState> GetSuccessorStates();
     int  GetLeadVehId(const Traffic & traffic, const TargetLane tgt_lane);
-    double CalcManeuverCost(FSMState state, const Traffic & traffic);
-    
-	void GenerateTrajectory( const Traffic             & traffic        ,           const Map & map, 							 									   
-								   std::vector<double> & next_x_vals    , std::vector<double> & next_y_vals);
-
 };
-
-
-
 
 inline bool isInvalid(double x) { return (x < -6666.0); }
 inline bool isInvalid(int x)    { return (x==INVALID) ; }
