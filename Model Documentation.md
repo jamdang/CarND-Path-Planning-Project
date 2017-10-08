@@ -1,17 +1,14 @@
 # CarND-Path-Planning-Project Writeup
-======
 
 Self-Driving Car Engineer Nanodegree Program
 
 ## Intro
-------
 This writeup provides a brief description of how the project is done. Basically, the solution follows the traditional robotics approach taught in Udacity's program and consists of three key parts (pipeline):
 - Traffic prediction
 - Maneuver planning
 - Trajectory planning
 
 ## Source Files Brief
-------
 #### `helper.h` `helper.cpp` `spline.h`
 Common auxiliary functions are placed here. Some functions in the original `main.cpp` file such as `NextWaypoint()` are also moved here to make code in the `main()` cleaner.
 `spline.h` is a header file containing open source code for spline fitting, downloaded [here](http://kluge.in-chemnitz.de/opensource/spline/).
@@ -25,7 +22,6 @@ The main code is added in the TODO section.
 Please note that `CMakeLists.txt` is changed due to the way the code is organized as described above.
 
 ## Pipeline Brief  
-------
 #### 1. Traffic Prediction
 Traffic prediction is supposed to consists of two parts: Maneuver detection (`TrafficParticipant::DetectManeuver()`) + Trajectory prediction (`TrafficParticipant::GetFrenetStateInTime`), both realized as member functions of class `TrafficParticipant`. For simplicity and in light of the characteristics of the simulator, the maneuver detection is basically omitted (API is kept for potential future implementation) with all traffic participant "detected" as keeping its current lane.
 
