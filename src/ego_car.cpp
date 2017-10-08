@@ -156,7 +156,7 @@ void EgoCar::TransitManeuver(const Traffic & traffic) {
 		cost_array[i].visited = false;
 		
 		//debug
-		cout << "lane " << i << " cost: " << cost_array[i].value << endl;
+		//cout << "lane " << i << " cost: " << cost_array[i].value << endl;
 	}
 	
 	// update/transit fsm state
@@ -228,6 +228,7 @@ double EgoCar::CalcManeuverCost(FSMState state, const Traffic & traffic) {
 	FrenetTrajectory traj = GetFrenetTraj(state, traffic);	
 	
 	//debug	
+	/*	
 	cout << "state: " << state << endl;
 	cout << "CalcManeuverCostOfBuffer           :   " << CalcManeuverCostOfBuffer(traffic, traj)           << endl 
 		 << "CalcManeuverCostOfBuffer same lane :   " << CalcManeuverCostOfBuffer(traffic, traj, true)     << endl 
@@ -235,7 +236,7 @@ double EgoCar::CalcManeuverCost(FSMState state, const Traffic & traffic) {
 		 << "CalcManeuverCostOfCollison         :   " << CalcManeuverCostOfCollison(traffic, traj)   	   << endl
 		 << "CalcManeuverCostOfLnChange         :   " << CalcManeuverCostOfLnChange(state)          	   << endl 
 		 << "CalcManeuverCostOfBraking          :   " << CalcManeuverCostOfBraking(traffic, traj)  	  	   << endl ;
-	/*	 	
+	 	
 	cout << "traj: " << endl;
 	for(int i = 0; i < traj.time.size(); i+=5) {
 		cout << "time: " << traj.time[i] 
@@ -263,7 +264,7 @@ double EgoCar::CalcManeuverCost(FSMState state, const Traffic & traffic) {
 							 CalcManeuverCostOfBraking    (traffic, traj)       * weight_braking            ) / weight_sum ;
 	
 	//debug
-	cout << "total_cost                         :   " << total_cost << endl; 
+	//cout << "total_cost                         :   " << total_cost << endl; 
 	
 	total_cost *= prefer_coeff;	
 	return total_cost;
@@ -277,7 +278,7 @@ double EgoCar::CalcManeuverCostOfBuffer(const Traffic & traffic, const FrenetTra
 	double closest_dist = CalcNearestDistToTraffic(traffic, traj, same_lane);
 	
 	// debug
-	cout << "maneuver cost of buffer closest_dist" << closest_dist << endl;
+	//cout << "maneuver cost of buffer closest_dist" << closest_dist << endl;
 	
 	return logistic(2 * kVehicleRadius / closest_dist);
 
@@ -491,9 +492,11 @@ void EgoCar::PlanManeuver(const Traffic & traffic) {
 	
 	int leading_veh_id = GetLeadVehId(traffic, GetTargetLane(this->fsm_state));
 	//debug
+	/*
 	cout << endl
 		 << "this->current_lane_id: " << this->current_lane_id << endl
 		 << "this->fsm_state: " << this->fsm_state << endl;
+	*/
 	
 	switch (this->fsm_state) {
 
@@ -888,7 +891,7 @@ double EgoCar::CalcTrajCostOfAccel(const Traffic & traffic, const NextTrajectory
 	
 	double mean_abs_acc = 0.0;
 	for (int i = 0; i < next_traj.acc_vals.size(); i ++) {
-		mean_abs_acc += abs(next_traj.acc_vals[i]);
+		mean_abs_acc += fabs(next_traj.acc_vals[i]);
 	}
 	
 	mean_abs_acc /= next_traj.acc_vals.size();
@@ -1203,6 +1206,7 @@ void EgoCar::GenerateTrajectory( const Traffic        & traffic        , const M
     //this->ref_vel = mod_vel;
     
     //debug
+    /*
     cout << endl 
     	 << "this->maneuver.target_speed: " << this->maneuver.target_speed << endl
 		 << "                    ref_vel: " << this->ref_vel << endl 
@@ -1210,6 +1214,6 @@ void EgoCar::GenerateTrajectory( const Traffic        & traffic        , const M
 		 << "                   this->yaw:" << this->yaw << endl
 		 << "                      ego s: " << this->s   << endl
 		 << "--------------------------------------------------------------------------------" << endl;
-
+	*/
           	
 }
